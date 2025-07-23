@@ -4,8 +4,8 @@ from sql_connection import get_sql_connection
 def get_all_products(connection):
     cursor = connection.cursor()
 
-    query = ("select products.product_id, products.name, uom.uom_id, uom.uom_name, products.price_per_unit"
-             " from products inner join uom on uom.uom_id=products.product_id")
+    query = ("SELECT products.product_id, products.name, uom.uom_id, uom.uom_name, products.price_per_unit "
+             "FROM products INNER JOIN uom ON uom.uom_id = products.uom_id")
 
     cursor.execute(query)
 
@@ -35,7 +35,7 @@ def insert_new_product(connection, product):
     cursor.execute(query, data)
     connection.commit()
 
-    return cursor.lastrowid
+    return {"message": "Product Added Successfully"}
 
 
 def delete_product(connection, product_id):
