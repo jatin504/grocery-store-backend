@@ -27,9 +27,6 @@ def delete_product_():
 @app.post("/add/product")
 def add_product():
     request_body = request.json
-    product_name = request_body['product_name']
-    uom_id = request_body['uom_id']
-    price_per_unit = request_body['price_per_unit']
     response = insert_new_product(connection, request_body)
 
     return response
